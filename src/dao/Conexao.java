@@ -13,7 +13,7 @@ public class Conexao {
         String password = "123";
 
         Connection connection = DriverManager.getConnection(url, user, password);
-        System.out.println("Conexão estabelecida!");
+        System.out.println("\nConexão estabelecida!");
 
         return connection;
 
@@ -21,6 +21,7 @@ public class Conexao {
 
     public static void encerrarConexao(Connection connection) throws SQLException {
         connection.close();
+        System.out.println("\nConexão encerrada!");
     }
 
 }

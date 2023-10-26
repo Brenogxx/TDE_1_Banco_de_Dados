@@ -26,7 +26,7 @@ public class DaoCurso {
             String codigo = rs.getString("codigo");
             String nome = rs.getString("nome");
             String carga_horaria = rs.getString("carga_horaria");
-            System.out.println("Código: " + codigo + ", Nome: " + nome + ", Carga Horária: " + carga_horaria);
+            System.out.println("\nCódigo: " + codigo + ", Nome: " + nome + ", Carga Horária: " + carga_horaria);
         }
 
         rs.close();
