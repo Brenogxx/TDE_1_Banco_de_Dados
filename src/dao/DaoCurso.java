@@ -34,4 +34,21 @@ public class DaoCurso {
 
     }
 
+    public static void mostarAlunosdoCurso(Connection connection, String codigo_curso) throws SQLException{
+        String selectSql = "SELECT matricula, nome FROM public.aluno WHERE codigo_curso = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(selectSql);
+        preparedStatement.setString(1,codigo_curso);
+
+        ResultSet rs = preparedStatement.executeQuery();
+
+        while (rs.next()) {
+            String matricula = rs.getString("matricula");
+            String nome = rs.getString("nome");
+            System.out.println("\nMatricula: " + matricula + ", Nome: " + nome);
+        }
+
+        rs.close();
+        preparedStatement.close();
+    }
+
 }

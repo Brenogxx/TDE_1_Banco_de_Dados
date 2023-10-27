@@ -34,4 +34,23 @@ public class DaoAluno {
 
     }
 
+    public static void mostrarCursodoAluno(Connection connection, String matricula) throws SQLException {
+
+        String selectSql = "SELECT a.nome as nome_aluno, c.nome as nome_curso From public.aluno a, public.curso c WHERE a.codigo_curso = c.codigo AND a.matricula = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(selectSql);
+        preparedStatement.setString(1,matricula);
+
+        ResultSet rs = preparedStatement.executeQuery();
+
+        while (rs.next()) {
+            String nome = rs.getString("nome_aluno");
+            String nome_curso = rs.getString("nome_curso");
+            System.out.println("\nNome: " + nome + ", Nome do Curso: " + nome_curso);
+        }
+
+        rs.close();
+        preparedStatement.close();
+
+    }
+
 }
